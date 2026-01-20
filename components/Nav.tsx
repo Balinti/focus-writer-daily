@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import GoogleAuth from './GoogleAuth';
 
 interface NavItem {
   href: string;
@@ -21,6 +22,10 @@ export default function Nav() {
 
   return (
     <nav className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 md:relative md:border-t-0 md:border-r md:h-screen md:w-64">
+      {/* Google Auth in header - visible on desktop */}
+      <div className="hidden md:block p-4 border-b border-gray-200">
+        <GoogleAuth />
+      </div>
       <div className="flex md:flex-col justify-around md:justify-start md:pt-4 md:gap-1">
         {navItems.map((item) => {
           const isActive = pathname === item.href ||
@@ -41,6 +46,10 @@ export default function Nav() {
             </Link>
           );
         })}
+      </div>
+      {/* Google Auth at bottom on mobile */}
+      <div className="md:hidden fixed top-0 left-0 right-0 bg-white border-b border-gray-200 p-3 z-10">
+        <GoogleAuth />
       </div>
     </nav>
   );
