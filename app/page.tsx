@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { clientFeatures } from '@/lib/env';
 import Button from '@/components/Button';
 import Card from '@/components/Card';
+import GoogleAuth from '@/components/GoogleAuth';
 
 export default function LandingPage() {
   const showPricing = clientFeatures.stripePricesConfigured;
@@ -14,15 +15,8 @@ export default function LandingPage() {
       <header className="bg-gradient-to-br from-blue-600 to-indigo-700 text-white">
         <nav className="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
           <div className="font-bold text-xl">Focus Writer Daily</div>
-          <div className="flex gap-4">
-            <Link href="/login" className="text-white/80 hover:text-white transition-colors">
-              Log in
-            </Link>
-            <Link href="/signup">
-              <Button size="sm" variant="secondary">
-                Sign up
-              </Button>
-            </Link>
+          <div className="flex gap-4 items-center">
+            <GoogleAuth />
           </div>
         </nav>
 
@@ -171,7 +165,7 @@ export default function LandingPage() {
                   <li>✓ Export & integrations</li>
                   <li>✓ Priority support</li>
                 </ul>
-                <Link href="/signup">
+                <Link href="/app">
                   <Button className="w-full">
                     Start Free Trial
                   </Button>
